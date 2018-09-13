@@ -1,0 +1,27 @@
+
+{% if con %}
+<script type="text/javascript">
+  alert( '{{ con }}' )
+</script>
+{% endif %}
+
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+      
+      <p>
+        <label for="id_username">College ID:</label><br>
+        <input type="text" name="username"  autofocus required id="id_username" />
+      </p>
+      
+      <p>
+        <label for="id_password1">Password:</label><br>
+        <input type="password" name="password1" required id="id_password1" />     
+      </p>
+      
+      <p>
+        <label for="id_password2">Password confirmation:</label><br>
+        <input type="password" name="password2" required id="id_password2" />
+      </p>
+    <button type="submit">Sign up</button>
+  </form>
