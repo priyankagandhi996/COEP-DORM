@@ -64,20 +64,13 @@ WSGI_APPLICATION = 'coep.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'coep',
-        'USER': 'aniket',
-        'PASSWORD': 'Chaitanya@12',
+        'USER': '',##enter the username of mysql database
+        'PASSWORD': '', ##enter the password of your mysql database
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -136,6 +129,6 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),"media")
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'cgawande98@gmail.com'
-EMAIL_HOST_PASSWORD = 'cc600200'
+EMAIL_HOST_USER = '' ##enter the mail_id 
+EMAIL_HOST_PASSWORD = '' ##enter password of email
 EMAIL_PORT = 587
