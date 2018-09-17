@@ -20,6 +20,7 @@ class CoepHostel(models.Model):
     district = models.CharField(db_column='DISTRICT', max_length=25)  # Field name made lowercase.
     year = models.CharField(db_column='YEAR', max_length=15)  # Field name made lowercase.
     cet = models.IntegerField(db_column='CET')  # Field name made lowercase.
+    preference = models.ManyToManyField('self',db_column='preference',)
     cgpa = models.FloatField(db_column='CGPA')  # Field name made lowercase.
 
     class Meta:
@@ -29,15 +30,20 @@ class CoepHostel(models.Model):
 
 class User(AbstractUser):
     username = models.IntegerField(null=False,unique=True)
-    year = models.CharField(max_length=2 ,null=True)
-    gender = models.CharField(db_column='GENDER', max_length=10 ,null=True)  # Field name made lowercase.
-    category = models.CharField(db_column='CATEGORY', max_length=15 ,null=True)  # Field name made lowercase.
+    year = models.CharField(max_length=2 ,null=True,default='')
+    gender = models.CharField(db_column='GENDER', max_length=10 ,null=True,default='')  # Field name made lowercase.
+    category = models.CharField(db_column='CATEGORY', max_length=15 ,null=True,default='')  # Field name made lowercase.
     email = models.CharField(db_column='EMAIL', max_length=25)  # Field name made lowercase.
-    cet = models.IntegerField(db_column='CET' ,null=True)  # Field name made lowercase.
-    cgpa = models.FloatField(db_column='CGPA',null=True)  # Field name made lowercase.
-    status = models.CharField(db_column='STATUS', max_length=20, blank=True, null=True)  # Field name made lowercase.
-    branch = models.CharField(db_column='BRANCH', max_length=50, null=True) 
-    name = models.CharField(db_column='NAME', max_length=25)
+    cet = models.IntegerField(db_column='CET' ,null=True,default=0)  # Field name made lowercase.
+    cgpa = models.FloatField(db_column='CGPA',null=True,default=0)  # Field name made lowercase.
+    status = models.CharField(db_column='STATUS', max_length=20, blank=True, null=True,default=0)  # Field name made lowercase.
+    branch = models.CharField(db_column='BRANCH', max_length=50, null=True,default='')
+    name = models.CharField(db_column='NAME', max_length=25,default='')
+    astatus = models.IntegerField(db_column='ASTATUS',default=0)
+    roomno = models.IntegerField(db_column='ROOMNO',default=0)
+    pref1=models.IntegerField(db_column='PREF1',null=True,default=0)
+    pref2=models.IntegerField(db_column='PREF2',null=True,default=0)
+    pref3=models.IntegerField(db_column='PREF3',null=True,default=0)
     USERNAME_FIELD = 'username'
 
     def __str__(self):
